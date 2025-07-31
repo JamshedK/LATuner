@@ -1,0 +1,13 @@
+[mysqld]
+
+        skip-name-resolve
+
+        port = 3306
+
+        character-set-server=utf8
+
+        # Knobs will be appended here
+
+        
+innodb_buffer_pool_size=64M
+max_connections=102

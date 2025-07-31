@@ -1,0 +1,26 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Directories
+/benchbase
+/mysql-data
+/Tuning
+
+# Other Python files
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Environment files
+.env
