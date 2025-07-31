@@ -390,15 +390,19 @@ class LLMTuner(Tuner):
 
     def _get_reward(self):
         if self.objective == 'lat':
-            perf_first = self.perfs['last_best_lat']
-            perf_last = self.perfs['cur_lat']
+            perf_first = self.dbenv.perfs['last_best_lat'] 
+            perf_last = self.dbenv.perfs['cur_lat']
+            if perf_first is None or perf_last is None:  # Handle None values
+                return 0
             if perf_first - perf_last > 0:
                 return 1
             else:
                 return 0
         else:
-            perf_first = self.perfs['last_best_tps']
-            perf_last = self.perfs['cur_tps']
+            perf_first = self.dbenv.perfs['last_best_tps']  
+            perf_last = self.dbenv.perfs['cur_tps']
+            if perf_first is None or perf_last is None:  # Handle None values
+                return 0
             if perf_last - perf_first > 0:
                 return 1
             else:
