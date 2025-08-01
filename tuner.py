@@ -145,7 +145,7 @@ class LLMTuner(Tuner):
     def _gen_candidates_llm(self, nums, target):
         system_content = self.system_content.format("MySQL")
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "8GB", "1TB", "2GB", "TPC-C", obj_str)
+        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "32GB", "50GB", "100MB", "TPC-C", obj_str)
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -196,7 +196,7 @@ class LLMTuner(Tuner):
     def _prediction_llm(self, knobs_set):
         system_content = self.system_content.format("MySQL")
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "8GB", "1TB", "2GB", "TPC-C", obj_str)
+        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "32GB", "50GB", "100MB", "TPC-C", obj_str)
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -244,7 +244,7 @@ class LLMTuner(Tuner):
         knobs_str = json.dumps(self.knobs_detail)
         system_content = self.system_content.format("MySQL")
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        user_content = self.user_content_prune.format(knobs_str, "MySQL", '4', '8GB', '1TB', '2GB', 'TPC-C', obj_str, nums)
+        user_content = self.user_content_prune.format(knobs_str, "MySQL", 4, "32GB", "50GB", "100MB", 'TPC-C', obj_str, nums)
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
@@ -272,7 +272,7 @@ class LLMTuner(Tuner):
         knobs_str = json.dumps(self.knobs_detail)
         system_content = self.system_content.format("MySQL")
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        user_content = self.user_content_ws_samples.format(knobs_str, "MySQL", '4', '8GB', '1TB', '2GB', 'TPC-C', obj_str, nums)
+        user_content = self.user_content_ws_samples.format(knobs_str, "MySQL", 4, "32GB", "50GB", "100MB", 'TPC-C', obj_str, nums)
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
