@@ -162,6 +162,8 @@ class LLMTuner(Tuner):
             self.get_config('workload_type', 'TPC-C'),
             obj_str
         )
+        self.logger.info(f"Get candidates LLM start")
+        self.logger.info(f"Get candidates LLM prompt: {prompt}")
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -222,6 +224,8 @@ class LLMTuner(Tuner):
             self.get_config('workload_type', 'TPC-C'),
             obj_str
         )
+        self.logger.info(f"Prediction LLM start")
+        self.logger.info(f"Predictoin LLM prompt: {prompt}")
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -280,6 +284,8 @@ class LLMTuner(Tuner):
             obj_str, 
             nums
         )
+        self.logger.info(f"Knob prune start")
+        self.logger.info(f"knob prune prompt: {user_content}")
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
@@ -318,6 +324,8 @@ class LLMTuner(Tuner):
             obj_str, 
             nums
         )
+        self.logger.info(f"Warm start sample generation start")
+        self.logger.info(f"warm start prompt: {user_content}")
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
