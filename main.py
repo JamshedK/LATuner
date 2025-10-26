@@ -1,9 +1,16 @@
 from MySQLEnv import MySQLEnv
+from MyPostgresEnv import MyPostgresEnv
 from tuner import LLMTuner
+from config import parse_config
 
 def llm_tuning_end2end():
-    dbenv = MySQLEnv('localhost', 'root', '', 'benchbase', 'benchbase_tpcc_1_16', 'tps', 'llm_end2end', 120, '/home/karimnazarovj/LATuner/template_docker.cnf', '/home/karimnazarovj/LATuner/my_docker.cnf')
-    llm_tuner = LLMTuner('/home/karimnazarovj/LATuner/mysql_knobs_llm.json', 60, dbenv, 100, None, 'tps', 10, 5)
+    # load config_ini file
+    config = parse_config.parse_args('/home/karimnazarovj/LATuner/config/config.ini')
+    default_config = config['DEFAULT']
+    tuner_config = config['TUNER_CONFIGS']  # Extract tuner-specific configs
+    print(default_config)
+    dbenv = MyPostgresEnv(config = default_config, path = '/home/karimnazarovj/LATuner/postgres_knobs_llm.json',)
+    llm_tuner = LLMTuner('/home/karimnazarovj/LATuner/postgres_knobs_llm.json', 44, dbenv, 100, None, 'tps', 10, 5, tuner_config=tuner_config)
     logger = dbenv.logger
     logger.warn("llm end2end tuning begin!!!")
     llm_tuner.tune_end2end()

@@ -24,6 +24,7 @@ class Tuner():
         self.dbenv = dbenv
         self.bugets = bugets
         self.logger = None if not self.dbenv else self.dbenv.logger
+
     def initialize_knobs(self):
         f = open(self.knobs_config_path)
         knob_tmp = json.load(f)
@@ -89,7 +90,7 @@ def proxy_chat(system_content, prompt):
     url = "https://api.openai-hk.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": os.getenv("openai_key")
+        "Authorization": os.getenv("latuner_openai_api_key")
     }
     data = {
         "model": "gpt-3.5-turbo-1106",
@@ -103,15 +104,21 @@ def proxy_chat(system_content, prompt):
     return json.loads(result)
 
 class LLMTuner(Tuner):
-    def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None, objective='lat', warm_start_times=10, prune_nums=5):
+    def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None, objective='lat', warm_start_times=10, prune_nums=5, tuner_config=None):
         super().__init__(knobs_config_path, knob_nums, dbenv, bugets, knob_idxs)
         self.method = "LLM"
         self.objective = objective
         self.warm_start_times = warm_start_times
         self.prune_nums = prune_nums
         self.proxy = False
-        api_key = os.getenv("openai_key")
+        api_key = os.getenv("latuner_openai_api_key")
         self.client = proxy_chat if self.proxy else OpenAI(api_key=api_key)
+        
+        # Store tuner config for dynamic access
+        self.tuner_config = tuner_config or {}
+        
+        # Helper method to get config values with defaults
+        self.get_config = lambda key, default: self.tuner_config.get(key, default)
         self.system_content = '''You will be helping me with the knob tuning task for {0} database. '''
         self.user_content_prune = '''The specific information for the knobs is: {0}. The specific information for the machine on which the {1} works is: {2} cores {3} RAM and {4} disk. The specific information for the workload is: {5} size {6}. The goal of the current tuning task is to optimize {7}, please give the {8} knobs that have the greatest impact on the performance of the database. You should give these top-{8} knobs by json style.  The given knobs must be included in the previously given knobs. Just give the json without any other extra output.'''
         self.user_content_ws_samples = '''The specific information for the knobs is: {0}. The specific information for the machine on which the {1} works is: {2} cores {3} RAM and {4} disk. The specific information for the workload is: {5} size {6}. The goal of the current tuning task is to optimize {7}, please suggest {8} diverse yet effective configurations to initiate a Bayesian Optimization process for knobs tuning. You mustn't include “None” in the configurations. Your response should include a list of dictionaries, where each dictionary describes one recommended configuration.Just give the dictionaries without any other extra output.'''
@@ -143,9 +150,18 @@ class LLMTuner(Tuner):
         return True
     
     def _gen_candidates_llm(self, nums, target):
-        system_content = self.system_content.format("MySQL")
+        system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "32GB", "50GB", "100MB", "TPC-C", obj_str)
+        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} {4} disk, under a {5} {6} workload. These examples involve adjusting various knobs configurations to observe changes in {7} metrics:\n'''.format(
+            self.get_config('database_type', 'PostgreSQL'),
+            self.get_config('cpu_cores', 4),
+            f"{self.get_config('memory_gb', 32)}GB",
+            f"{self.get_config('disk_gb', 50)}GB",
+            self.get_config('disk_type', 'SSD'),
+            f"{self.get_config('workload_size_mb', 100)}MB",
+            self.get_config('workload_type', 'TPC-C'),
+            obj_str
+        )
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -194,9 +210,18 @@ class LLMTuner(Tuner):
         return samples
 
     def _prediction_llm(self, knobs_set):
-        system_content = self.system_content.format("MySQL")
+        system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} disk, under a {4} {5} workload. These examples involve adjusting various knobs configurations to observe changes in {6} metrics:\n'''.format("MySQL", 4, "32GB", "50GB", "100MB", "TPC-C", obj_str)
+        prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} {4} disk, under a {5} {6} workload. These examples involve adjusting various knobs configurations to observe changes in {7} metrics:\n'''.format(
+            self.get_config('database_type', 'PostgreSQL'),
+            self.get_config('cpu_cores', 4),
+            f"{self.get_config('memory_gb', 32)}GB",
+            f"{self.get_config('disk_gb', 50)}GB",
+            self.get_config('disk_type', 'SSD'),
+            f"{self.get_config('workload_size_mb', 100)}MB",
+            self.get_config('workload_type', 'TPC-C'),
+            obj_str
+        )
         data_file = self.dbenv.metric_save_path
         f = open(data_file, 'r')
         lines = f.readlines()
@@ -242,9 +267,19 @@ class LLMTuner(Tuner):
 
     def _knob_prune(self, nums):
         knobs_str = json.dumps(self.knobs_detail)
-        system_content = self.system_content.format("MySQL")
+        system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        user_content = self.user_content_prune.format(knobs_str, "MySQL", 4, "32GB", "50GB", "100MB", 'TPC-C', obj_str, nums)
+        user_content = self.user_content_prune.format(
+            knobs_str, 
+            self.get_config('database_type', 'PostgreSQL'),
+            self.get_config('cpu_cores', 4),
+            f"{self.get_config('memory_gb', 32)}GB",
+            f"{self.get_config('disk_gb', 50)}GB {self.get_config('disk_type', 'SSD')}",
+            f"{self.get_config('workload_size_mb', 100)}MB",
+            self.get_config('workload_type', 'TPC-C'),
+            obj_str, 
+            nums
+        )
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
@@ -270,9 +305,19 @@ class LLMTuner(Tuner):
     
     def _get_warm_start_samples(self, nums):
         knobs_str = json.dumps(self.knobs_detail)
-        system_content = self.system_content.format("MySQL")
+        system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
         obj_str = 'throughput' if self.objective == 'tps' else 'latency'
-        user_content = self.user_content_ws_samples.format(knobs_str, "MySQL", 4, "32GB", "50GB", "100MB", 'TPC-C', obj_str, nums)
+        user_content = self.user_content_ws_samples.format(
+            knobs_str, 
+            self.get_config('database_type', 'PostgreSQL'),
+            self.get_config('cpu_cores', 4),
+            f"{self.get_config('memory_gb', 32)}GB",
+            f"{self.get_config('disk_gb', 50)}GB {self.get_config('disk_type', 'SSD')}",
+            f"{self.get_config('workload_size_mb', 100)}MB",
+            self.get_config('workload_type', 'TPC-C'),
+            obj_str, 
+            nums
+        )
         if self.proxy:
             completion = self.client(system_content, user_content)
         else:
