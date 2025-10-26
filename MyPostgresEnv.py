@@ -13,7 +13,7 @@ def get_knobs(path):
     knobs_json = json.load(f)
     return knobs_json
 
-class PostgresDatabase:
+class MyPostgresEnv:
     def __init__(self, config, path):
         self.host = config['host']
         self.port = int(config['port'])
@@ -55,13 +55,39 @@ class PostgresDatabase:
         self.perfs['cur_tps'], self.perfs['default_tps'], self.perfs['best_tps'], self.perfs["last_best_tps"] = None, None, None, None
         self.perfs['cur_lat'], self.perfs['default_lat'], self.perfs['best_lat'], self.perfs["last_best_lat"] = None, None, None, None
 
-        def get_conn(self):
-            conn = psycopg2.connect(database=self.db_name,  # ← Change self.database to self.db_name
-                                    user=self.user,
-                                    password=self.password,
-                                    host=self.host,
-                                    port=int(self.port))
-            return conn
+    def get_conn(self, max_retries=3):
+        """Get PostgreSQL connection with retry logic"""
+        for attempt in range(max_retries):
+            try:
+                conn = psycopg2.connect(
+                    database=self.db_name,
+                    user=self.user,
+                    password=self.password,
+                    host=self.host,
+                    port=int(self.port),
+                    connect_timeout=10  # Add timeout
+                )
+                if attempt > 0:
+                    self.logger.info(f"Connection successful on attempt {attempt + 1}")
+                return conn
+                
+            except psycopg2.OperationalError as e:
+                self.logger.warning(f"Connection attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f"Retrying in 2 seconds... ({attempt + 2}/{max_retries})")
+                    time.sleep(2)
+                else:
+                    self.logger.error(f"Failed to connect after {max_retries} attempts")
+                    raise
+                    
+            except Exception as e:
+                self.logger.error(f"Unexpected error on attempt {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f"Retrying in 2 seconds... ({attempt + 2}/{max_retries})")
+                    time.sleep(2)
+                else:
+                    self.logger.error(f"Failed to connect after {max_retries} attempts")
+                    raise
     
     def fetch_knob(self):
         conn = self.get_conn()
@@ -100,29 +126,31 @@ class PostgresDatabase:
 
     def reset_all_knobs(self):
         """Reset all knobs to defaults using ALTER SYSTEM"""
-        conn = self.get_conn()
-        cursor = conn.cursor()
-        
         try:
-            for knob in self.knobs:
-                try:
-                    sql = f"ALTER SYSTEM RESET {knob};"
-                    cursor.execute(sql)
-                    self.logger.info(f"Reset {knob} to default")
-                except Exception as error:
-                    self.logger.warning(f"Could not reset {knob}: {error}")
+            conn = self.get_conn()
+            cursor = conn.cursor()
+            conn.autocommit = True  # Enable autocommit for ALTER SYSTEM commands
             
-            conn.commit()
-            cursor.execute("SELECT pg_reload_conf();")
-            conn.commit()
+            try:
+                sql = "ALTER SYSTEM RESET ALL;"
+                cursor.execute(sql)
+                self.logger.info("Reset all knobs to default")
+                
+                # No need for conn.commit() - autocommit handles it
+                cursor.execute("SELECT pg_reload_conf();")
+
             
-            self.logger.info("All knobs reset to defaults!")
-            
+                self.logger.info("All knobs reset to defaults!")
+                
+            except Exception as error:
+                self.logger.error(f"Error resetting knobs: {error}")
+            finally:
+                cursor.close()
+                conn.close()
+                
         except Exception as error:
-            self.logger.error(f"Error resetting knobs: {error}")
-        finally:
-            cursor.close()
-            conn.close()
+            self.logger.error(f"Could not connect to database for resetting knobs: {error}")
+
 
     def restart_postgres(self):
         """Restart PostgreSQL using pg_ctlcluster"""
@@ -166,6 +194,7 @@ class PostgresDatabase:
         flag = True
         conn = self.get_conn()
         cursor = conn.cursor()
+        conn.autocommit = True  # Enable autocommit for ALTER SYSTEM commands
         
         try:
             for knob in knobs:
@@ -187,13 +216,9 @@ class PostgresDatabase:
                 except Exception as error:
                     print(f"Error setting {knob} = {val}: {error}")
                     flag = False
-            
-            # Commit the changes
-            conn.commit()
-            
+                        
             # Reload configuration
             cursor.execute("SELECT pg_reload_conf();")
-            conn.commit()
             
             if flag:
                 self.logger.info('Applied knobs successfully!')
@@ -214,7 +239,7 @@ class PostgresDatabase:
         conn = self.get_conn()
         sql = "SELECT ROUND(pg_database_size(%s) / 1024.0 / 1024.0, 2)"
         cursor = conn.cursor()
-        cursor.execute(sql, (self.database,))
+        cursor.execute(sql, (self.db_name,))
         result = cursor.fetchall()
         db_size = float(result[0][0])
         cursor.close()
@@ -295,7 +320,7 @@ class PostgresDatabase:
             self.logger.info("begin workload stress test")
             p_benchmark = subprocess.Popen(cmd, shell=True, stderr=subprocess.STDOUT, stdout=subprocess.PIPE, close_fds=True)
             try:
-                outs, errs = p_benchmark.communicate(timeout=self.stress_test_duration + self.tolerance_time)
+                outs, errs = p_benchmark.communicate(timeout=int(self.stress_test_duration) + int(self.tolerance_time))
                 ret_code = p_benchmark.poll()
                 if ret_code == 0:
                     self.logger.info("benchmark finished!")
