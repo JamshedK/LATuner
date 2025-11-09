@@ -246,9 +246,24 @@ class MyPostgresEnv:
         conn.close()
         return db_size
     
+    def copy_db(self):
+        """Recreate database from template if objective is tps"""
+        if self.objective == 'tps':
+            self.logger.info("Recreating database from template for TPC-C")
+            script_path = os.path.join(os.path.dirname(__file__), 'scripts', 'copy_db_from_template.sh')
+            cmd = [script_path, self.db_name]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                self.logger.error(f"Failed to recreate database: {result.stderr}")
+                raise Exception(f"Database recreation failed: {result.stderr}")
+            self.logger.info("Database recreated successfully")
+    
     def step(self, knobs=None):
         """Main step function - apply knobs and get metrics"""
         self.logger.info(f"=== Starting round {self.round} ===")
+        
+        # Recreate database from template if needed
+        # self.copy_db()
         
         # Apply knobs
         flag = self.apply_knobs(knobs)

@@ -6,8 +6,10 @@ __pycache__/
 # Directories
 /benchbase
 /mysql-data
-/Tuning
-
+# /Tuning
+stress_logs/
+stress_results/
+tb_logs/
 # Other Python files
 *.so
 *.egg

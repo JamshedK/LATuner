@@ -301,13 +301,19 @@ class LLMTuner(Tuner):
         for key in list(self.knobs_detail.keys()):
             if key in strs:
                 keys.append(key)
-        print(keys)
-        assert(len(keys) == nums)
+        print(f"Found {len(keys)} knobs from LLM response: {keys}")
+        print(f"Expected {nums} knobs, LLM response: {strs}")
+        
+        # If LLM didn't return exactly the expected number, use all available knobs
+        if len(keys) != nums:
+            self.logger.warning(f"LLM returned {len(keys)} knobs but expected {nums}. Using all available knobs.")
+            keys = list(self.knobs_detail.keys())[:nums]  # Take first 'nums' knobs
+            print(f"Fallback to first {nums} knobs: {keys}")
         KNOB_DETAILS = {}
         for key in keys:
             KNOB_DETAILS[key] = self.knobs_detail[key]
         self.knobs_detail = KNOB_DETAILS
-        self.knob_nums = nums
+        self.knob_nums = len(keys)  # Use actual number of selected knobs
     
     def _get_warm_start_samples(self, nums):
         knobs_str = json.dumps(self.knobs_detail)

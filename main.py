@@ -10,7 +10,7 @@ def llm_tuning_end2end():
     tuner_config = config['TUNER_CONFIGS']  # Extract tuner-specific configs
     print(default_config)
     dbenv = MyPostgresEnv(config = default_config, path = '/home/karimnazarovj/LATuner/postgres_knobs_llm.json',)
-    llm_tuner = LLMTuner('/home/karimnazarovj/LATuner/postgres_knobs_llm.json', 44, dbenv, 100, None, 'tps', 10, 5, tuner_config=tuner_config)
+    llm_tuner = LLMTuner('/home/karimnazarovj/LATuner/postgres_knobs_llm.json', 44, dbenv, 100, None, default_config['objective'], 10, 5, tuner_config=tuner_config)
     logger = dbenv.logger
     logger.warn("llm end2end tuning begin!!!")
     llm_tuner.tune_end2end()
