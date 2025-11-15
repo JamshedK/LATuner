@@ -64,6 +64,23 @@ def transform_knobs2cnf(knobs_detail, knobs):
             pass
     return knobs
 
+def proxy_chat(system_content, prompt):
+    url = "https://api.openai-hk.com/v1/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": os.getenv("latuner_openai_api_key")
+    }
+    data = {
+        "model": "gpt-3.5-turbo-1106",
+        "messages": [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": prompt}
+        ]
+    }
+    response = requests.post(url, headers=headers, data=json.dumps(data).encode('utf-8') )
+    result = response.content.decode("utf-8")
+    return json.loads(result)
+
 class Tuner():
     def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None):
         self.knobs_config_path = knobs_config_path
@@ -94,23 +111,6 @@ class Tuner():
                     KNOB_DETAILS[key] = knob_tmp[key]
         f.close()
         self.knobs_detail = KNOB_DETAILS
-
-def proxy_chat(system_content, prompt):
-    url = "https://api.openai-hk.com/v1/chat/completions"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": os.getenv("latuner_openai_api_key")
-    }
-    data = {
-        "model": "gpt-3.5-turbo-1106",
-        "messages": [
-            {"role": "system", "content": system_content},
-            {"role": "user", "content": prompt}
-        ]
-    }
-    response = requests.post(url, headers=headers, data=json.dumps(data).encode('utf-8') )
-    result = response.content.decode("utf-8")
-    return json.loads(result)
 
 class LLMTuner(Tuner):
     def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None, objective='lat', warm_start_times=10, prune_nums=5, tuner_config=None):
