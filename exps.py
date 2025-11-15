@@ -15,38 +15,6 @@ from openai import OpenAI
 from mab import ThompsonSamplingBandit
 import requests
 
-class Tuner():
-    def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None):
-        self.knobs_config_path = knobs_config_path
-        self.knob_nums = knob_nums
-        self.knob_idxs = knob_idxs
-        self.initialize_knobs()
-        self.dbenv = dbenv
-        self.bugets = bugets
-        self.logger = None if not self.dbenv else self.dbenv.logger
-
-    def initialize_knobs(self):
-        f = open(self.knobs_config_path)
-        knob_tmp = json.load(f)
-        KNOB_DETAILS = {}
-        if not self.knob_idxs:
-            i = 0
-            while i < self.knob_nums:
-                key = list(knob_tmp.keys())[i]
-                KNOB_DETAILS[key] = knob_tmp[key]
-                i = i + 1
-        else:
-            if type(self.knob_idxs[0]) == int:
-                for idx in self.knob_idxs:
-                    key = list(knob_tmp.keys())[idx]
-                    KNOB_DETAILS[key] = knob_tmp[key]
-            else:
-                for key in self.knob_idxs:
-                    KNOB_DETAILS[key] = knob_tmp[key]
-        f.close()
-        self.knobs_detail = KNOB_DETAILS
-
-
 def transform_knobs2vector(knobs_detail, knobs):
     keys = list(knobs.keys())
     ys = []
@@ -95,6 +63,37 @@ def transform_knobs2cnf(knobs_detail, knobs):
         else:
             pass
     return knobs
+
+class Tuner():
+    def __init__(self, knobs_config_path, knob_nums, dbenv, bugets, knob_idxs=None):
+        self.knobs_config_path = knobs_config_path
+        self.knob_nums = knob_nums
+        self.knob_idxs = knob_idxs
+        self.initialize_knobs()
+        self.dbenv = dbenv
+        self.bugets = bugets
+        self.logger = None if not self.dbenv else self.dbenv.logger
+
+    def initialize_knobs(self):
+        f = open(self.knobs_config_path)
+        knob_tmp = json.load(f)
+        KNOB_DETAILS = {}
+        if not self.knob_idxs:
+            i = 0
+            while i < self.knob_nums:
+                key = list(knob_tmp.keys())[i]
+                KNOB_DETAILS[key] = knob_tmp[key]
+                i = i + 1
+        else:
+            if type(self.knob_idxs[0]) == int:
+                for idx in self.knob_idxs:
+                    key = list(knob_tmp.keys())[idx]
+                    KNOB_DETAILS[key] = knob_tmp[key]
+            else:
+                for key in self.knob_idxs:
+                    KNOB_DETAILS[key] = knob_tmp[key]
+        f.close()
+        self.knobs_detail = KNOB_DETAILS
 
 def proxy_chat(system_content, prompt):
     url = "https://api.openai-hk.com/v1/chat/completions"
