@@ -347,7 +347,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line['Latency Distribution']['95th Percentile Latency (microseconds)'] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             prompt += "Knob configuration: " + json.dumps(knobs) + "\n"
             prompt += "Performance: " + str(int(metric)) + "\n"
@@ -410,7 +410,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line['Latency Distribution']['95th Percentile Latency (microseconds)'] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             prompt += "Knob configuration: " + json.dumps(knobs) + "\n"
             prompt += "Performance: " + str(int(metric)) + "\n"
@@ -567,7 +567,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line['Latency Distribution']['95th Percentile Latency (microseconds)'] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             train_X.append(transform_knobs2vector(self.knobs_detail, knobs))
             train_Y.append([metric])
@@ -597,7 +597,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line['Latency Distribution']['95th Percentile Latency (microseconds)'] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             train_X.append(transform_knobs2vector(self.knobs_detail, knobs))
             train_Y.append([metric])
