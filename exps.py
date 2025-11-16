@@ -482,11 +482,39 @@ class LLMTuner(Tuner):
         print(f"Found {len(keys)} knobs from LLM response: {keys}")
         print(f"Expected {nums} knobs, LLM response: {strs}")
         
-        # If LLM didn't return exactly the expected number, use all available knobs
+        # If LLM didn't return exactly the expected number, retry up to 3 times
+        retry_count = 0
+        max_retries = 3
+        
+        while len(keys) != nums and retry_count < max_retries:
+            retry_count += 1
+            self.logger.warning(f"LLM returned {len(keys)} knobs but expected {nums}. Retrying ({retry_count}/{max_retries})...")
+            
+            # Retry the LLM call
+            if self.proxy:
+                completion = self.client(system_content, user_content)
+            else:
+                completion = self.client.chat.completions.create(
+                    model="gpt-3.5-turbo-1106",
+                    messages=[
+                        {"role": "system", "content": system_content},
+                        {"role": "user", "content": user_content}
+                    ]
+                )
+            strs = completion["choices"][0]["message"]["content"] if self.proxy else completion.choices[0].message.content
+            keys = []
+            for key in list(self.knobs_detail.keys()):
+                knob_name = f'"{key.strip()}"'
+                if knob_name in strs:
+                    keys.append(key)
+            print(f"Retry {retry_count}: Found {len(keys)} knobs from LLM response: {keys}")
+        
+        # If still not the expected number after all retries, fail the program
         if len(keys) != nums:
-            self.logger.warning(f"LLM returned {len(keys)} knobs but expected {nums}. Using all available knobs.")
-            keys = list(self.knobs_detail.keys())[:nums]  # Take first 'nums' knobs
-            print(f"Fallback to first {nums} knobs: {keys}")
+            error_msg = f"LLM failed to return exactly {nums} knobs after {max_retries} retries. Got {len(keys)} knobs: {keys}"
+            self.logger.error(error_msg)
+            raise RuntimeError(error_msg)
+        
         KNOB_DETAILS = {}
         for key in keys:
             KNOB_DETAILS[key] = self.knobs_detail[key]
