@@ -151,7 +151,7 @@ class LLMTuner(Tuner):
     
     def _gen_candidates_llm(self, nums, target):
         system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
-        obj_str = 'throughput' if self.objective == 'tps' else 'latency'
+        obj_str = 'throughput' if self.objective == 'tps' else 'total execution time'
         prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} {4} disk, under a {5} {6} workload. These examples involve adjusting various knobs configurations to observe changes in {7} metrics:\n'''.format(
             self.get_config('database_type', 'PostgreSQL'),
             self.get_config('cpu_cores', 4),
@@ -171,12 +171,13 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line["Total Execution Time"] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             prompt += "Knob configuration: " + json.dumps(knobs) + "\n"
-            prompt += "Performance: " + str(int(metric)) + "\n"
+            prompt += "Performance in seconds: " + str(int(metric)) + "\n"
         prompt +=  f"The database knob space is: {json.dumps(self.knobs_detail)}." + "\n"
         prompt += f"Please recommend {nums} configurations that will result in a database {obj_str} of {int(target)}. Each knob must contained within the knob space, Your response must only contain the predicted configurations, in the format ## Knob configuration: ##."
+        self.logger.info(f"Get candidates LLM prompt: {prompt}")
         count = 10
         while count > 0:
             try:
@@ -213,7 +214,7 @@ class LLMTuner(Tuner):
 
     def _prediction_llm(self, knobs_set):
         system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
-        obj_str = 'throughput' if self.objective == 'tps' else 'latency'
+        obj_str = 'throughput' if self.objective == 'tps' else 'total execution time'
         prompt = '''The following examples demonstrate {0} database running on a machine with {1} cores, {2} of memory, and a {3} {4} disk, under a {5} {6} workload. These examples involve adjusting various knobs configurations to observe changes in {7} metrics:\n'''.format(
             self.get_config('database_type', 'PostgreSQL'),
             self.get_config('cpu_cores', 4),
@@ -233,10 +234,10 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line["Total Execution Time"] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             prompt += "Knob configuration: " + json.dumps(knobs) + "\n"
-            prompt += "Performance: " + str(int(metric)) + "\n"
+            prompt += "Performance in seconds: " + str(int(metric)) + "\n"
         prompt +=  f"The allowable ranges for knobs are: {json.dumps(self.knobs_detail)}. "
         prompt += "Please combine the above information to determine which of the following configurations is a high potential configuration: \n"
         for knobs in knobs_set:
@@ -272,7 +273,7 @@ class LLMTuner(Tuner):
     def _knob_prune(self, nums):
         knobs_str = json.dumps(self.knobs_detail)
         system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
-        obj_str = 'throughput' if self.objective == 'tps' else 'latency'
+        obj_str = 'throughput' if self.objective == 'tps' else 'total execution time'
         user_content = self.user_content_prune.format(
             knobs_str, 
             self.get_config('database_type', 'PostgreSQL'),
@@ -318,7 +319,7 @@ class LLMTuner(Tuner):
     def _get_warm_start_samples(self, nums):
         knobs_str = json.dumps(self.knobs_detail)
         system_content = self.system_content.format(self.get_config('database_type', 'PostgreSQL'))
-        obj_str = 'throughput' if self.objective == 'tps' else 'latency'
+        obj_str = 'throughput' if self.objective == 'tps' else 'total execution time'
         user_content = self.user_content_ws_samples.format(
             knobs_str, 
             self.get_config('database_type', 'PostgreSQL'),
@@ -361,7 +362,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line["Total Execution Time"] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             train_X.append(transform_knobs2vector(self.knobs_detail, knobs))
             train_Y.append([metric])
@@ -391,7 +392,7 @@ class LLMTuner(Tuner):
         for line in lines[1:]:
             line = json.loads(line)
             knobs = line['knobs']
-            metric = line['Latency Distribution']['Average Latency (microseconds)'] if self.objective == 'lat' \
+            metric = line["Total Execution Time"] if self.objective == 'lat' \
                      else line['Throughput (requests/second)']
             train_X.append(transform_knobs2vector(self.knobs_detail, knobs))
             train_Y.append([metric])

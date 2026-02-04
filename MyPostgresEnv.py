@@ -7,6 +7,7 @@ import glob
 import pandas as pd
 from logger import SingletonLogger
 from torch.utils.tensorboard import SummaryWriter
+from manual_workload_runner import ManualWorkloadRunner
 
 def get_knobs(path):
     f = open(path, 'r')
@@ -28,6 +29,7 @@ class MyPostgresEnv:
         self.objective = config['objective']
         self.method = config['method']
         self.stress_test_duration = config['stress_test_duration']
+        self.benchmark = config.get('benchmark', 'tpch')  # Default to tpch if not specified
         self.tolerance_time = 20
 
         self._initial()
@@ -104,66 +106,65 @@ class MyPostgresEnv:
         return knobs
 
     def apply_knobs(self, knobs=None):
-        """3-step process: Reset -> Set -> Restart"""
+        """3-step process: Clean Restart -> Set -> Restart"""
         if knobs is None:
             knobs = {}
             
         self.logger.info(f"Applying knobs with 3-step process: {knobs}")
         
-        # Step 1: Reset all knobs to defaults
-        self.logger.info("Step 1: Resetting all knobs to defaults")
-        self.reset_all_knobs()
+        # Step 1: Clean restart (removes postgresql.auto.conf)
+        self.logger.info("Step 1: Clean restart to reset all knobs")
+        success = self.restart_postgres_clean()
+        if not success:
+            self.logger.error("Failed to clean restart PostgreSQL")
+            return False
         
         # Step 2: Set new knobs
         self.logger.info("Step 2: Setting new knobs")
         self.change_knob(knobs)
         
-        # Step 3: Restart PostgreSQL
+        # Step 3: Restart PostgreSQL to apply new knobs
         self.logger.info("Step 3: Restarting PostgreSQL")
         success = self.restart_postgres()
         
         return success
 
-    def reset_all_knobs(self):
-        """Reset all knobs to defaults using ALTER SYSTEM"""
+    def restart_postgres_clean(self):
+        """Clean restart: removes postgresql.auto.conf and starts fresh using recovery script"""
         try:
-            conn = self.get_conn()
-            cursor = conn.cursor()
-            conn.autocommit = True  # Enable autocommit for ALTER SYSTEM commands
+            self.logger.info("Running recovery script recover_postgres.sh to clean restart PostgreSQL...")
+            result = subprocess.run(
+                ["bash", "/home/karimnazarovj/LATuner/scripts/recover_postgres.sh"],
+                capture_output=True,
+                timeout=60
+            )
             
-            try:
-                sql = "ALTER SYSTEM RESET ALL;"
-                cursor.execute(sql)
-                self.logger.info("Reset all knobs to default")
+            if result.returncode == 0:
+                self.logger.info("Recovery script completed successfully")
+                # Get db size after clean start
+                time.sleep(2)
+                self.dbsize = self.get_db_size()
+                return True
+            else:
+                self.logger.error(f"Recovery script failed: {result.stderr.decode()}")
+                return False
                 
-                # No need for conn.commit() - autocommit handles it
-                cursor.execute("SELECT pg_reload_conf();")
-
-            
-                self.logger.info("All knobs reset to defaults!")
-                
-            except Exception as error:
-                self.logger.error(f"Error resetting knobs: {error}")
-            finally:
-                cursor.close()
-                conn.close()
-                
-        except Exception as error:
-            self.logger.error(f"Could not connect to database for resetting knobs: {error}")
-
+        except Exception as e:
+            self.logger.error(f"Error running recovery script: {e}")
+            return False
 
     def restart_postgres(self):
         """Restart PostgreSQL using pg_ctlcluster"""
         try:
             # Stop PostgreSQL
-            self.logger.info("Stopping PostgreSQL...")
-            subprocess.run(["sudo", "pg_ctlcluster", "12", "main", "stop"], 
+            self.logger.info("Stopping PostgreSQL 14...")
+            subprocess.run(["sudo", "pg_ctlcluster", "14", "main", "stop"], 
                         capture_output=True, timeout=30)
             time.sleep(3)
             
             # Start PostgreSQL
-            self.logger.info("Starting PostgreSQL...")
-            subprocess.run(["sudo", "pg_ctlcluster", "12", "main", "start"], 
+            self.logger.info("Starting PostgreSQL 14...")
+            subprocess.run(["sudo", "pg_ctlcluster", "14", "main", "start"], 
                         capture_output=True, timeout=30)
             
             # Wait for PostgreSQL to be ready
@@ -246,9 +247,55 @@ class MyPostgresEnv:
         conn.close()
         return db_size
     
+    def copy_db(self, target_db, source_db):
+        """Copy database from template - used for TPCC to restore fresh data each iteration"""
+        # Connect to 'postgres' database instead of target_db to avoid "cannot drop the currently open database" error
+        conn = psycopg2.connect(
+            database='postgres',  # Connect to postgres db, not the target
+            user=self.user,
+            password=self.password,
+            host=self.host,
+            port=int(self.port)
+        )
+        conn.autocommit = True
+        cursor = conn.cursor()
+        
+        try:
+            # Terminate existing connections to target db
+            cursor.execute(f"""
+                SELECT pg_terminate_backend(pid) 
+                FROM pg_stat_activity 
+                WHERE datname = '{target_db}' AND pid <> pg_backend_pid()
+            """)
+            
+            # Drop old database
+            cursor.execute(f'DROP DATABASE IF EXISTS {target_db}')
+            self.logger.info(f'Dropped old database: {target_db}')
+            
+            # Create from template
+            cursor.execute(f'CREATE DATABASE {target_db} WITH TEMPLATE {source_db}')
+            self.logger.info(f'Initialized new database from template: {source_db}')
+            
+            return True
+        except Exception as e:
+            self.logger.error(f"Error copying database: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
+    
     def step(self, knobs=None):
         """Main step function - apply knobs and get metrics"""
         self.logger.info(f"=== Starting round {self.round} ===")
+        
+        # For TPCC, restore database from template before each iteration
+        if self.benchmark == 'tpcc':
+            self.logger.info("TPCC benchmark detected - restoring database from template")
+            template_db = f"{self.db_name}_template"  # Assuming template is named with _template suffix
+            success = self.copy_db(self.db_name, template_db)
+            if not success:
+                self.logger.error("Failed to restore database from template")
+                return None
         
         # Apply knobs
         flag = self.apply_knobs(knobs)
@@ -289,7 +336,30 @@ class MyPostgresEnv:
                 self.writer.add_scalars(f"tps_{self.workload}_{self.timestamp}_{self.method}" , {'cur': self.perfs['cur_tps'], 'best': self.perfs['best_tps'], 'default': self.perfs['default_tps']}, self.round)
                 self.writer.add_scalars(f"lat_{self.workload}_{self.timestamp}_{self.method}" , {'cur': self.perfs['cur_lat'], 'best': self.perfs['best_lat'], 'default': self.perfs['default_lat']}, self.round)
             else:
-                pass
+                # Manual workload
+                metrics['knobs'] = knobs
+                metrics['dbsize'] = self.dbsize
+                tmp_tps = metrics["Throughput (requests/second)"]
+                tmp_lat = metrics["Total Execution Time"]
+                
+                if not self.perfs['cur_tps']:
+                    self.perfs['cur_tps'], self.perfs['default_tps'], self.perfs['best_tps'], self.perfs['last_best_tps'] = tmp_tps, tmp_tps, tmp_tps, tmp_tps
+                else:
+                    self.perfs['cur_tps'] = tmp_tps
+                    if self.perfs['best_tps'] < tmp_tps:
+                        self.perfs['last_best_tps'] = self.perfs['best_tps']
+                        self.perfs['best_tps'] = tmp_tps
+
+                if not self.perfs['cur_lat']:
+                    self.perfs['cur_lat'], self.perfs['default_lat'], self.perfs['best_lat'], self.perfs['last_best_lat'] = tmp_lat, tmp_lat, tmp_lat, tmp_lat
+                else:
+                    self.perfs['cur_lat'] = tmp_lat
+                    if self.perfs['best_lat'] > tmp_lat:
+                        self.perfs['last_best_lat'] = self.perfs['best_lat']
+                        self.perfs['best_lat'] = tmp_lat
+                        
+                self.writer.add_scalars(f"tps_{self.workload}_{self.timestamp}_{self.method}" , {'cur': self.perfs['cur_tps'], 'best': self.perfs['best_tps'], 'default': self.perfs['default_tps']}, self.round)
+                self.writer.add_scalars(f"lat_{self.workload}_{self.timestamp}_{self.method}" , {'cur': self.perfs['cur_lat'], 'best': self.perfs['best_lat'], 'default': self.perfs['default_lat']}, self.round)
         except Exception as e:
             tmp_tps = -0x3f3f3f3f
             tmp_lat = 0x3f3f3f3f
@@ -314,6 +384,28 @@ class MyPostgresEnv:
             pass
 
     def get_metrics(self):
+        # Handle manual workload
+        if self.workload == "manual":
+            self.logger.info("Running manual workload")
+            runner = ManualWorkloadRunner()
+            runner.data_pre()
+            throughput, execution_time = runner.run()
+            
+            total_queries = throughput * execution_time
+            avg_latency_us = (execution_time * 1_000_000) / total_queries if total_queries > 0 else 0
+            
+            metrics = {
+                "Throughput (requests/second)": throughput,
+                "Total Execution Time": execution_time,
+                "Latency Distribution": {
+                    "Average Latency (microseconds)": avg_latency_us
+                },
+                "knobs": None,
+                "dbsize": self.dbsize
+            }
+            return metrics
+        
+        # Handle benchbase workload (existing code)
         cmd = self.get_workload_info()
         self.logger.info(f"get workload stress test cmd: {cmd}")
         try:
@@ -355,6 +447,17 @@ class MyPostgresEnv:
                 if not file.endswith("summary.json"):
                     os.remove(os.path.join(self.stress_results, file))
 
+            # Clean up massive log files from stress_logs directory
+            try:
+                log_files = os.listdir(self.stress_logs)
+                for log_file in log_files:
+                    log_path = os.path.join(self.stress_logs, log_file)
+                    if os.path.isfile(log_path):
+                        os.remove(log_path)
+                        self.logger.info(f"Deleted log file: {log_file}")
+            except Exception as e:
+                self.logger.warning(f"Error cleaning stress_logs: {e}")
+
             files = [file for file in files if file.endswith("summary.json")]
             files = sorted(files)
             return os.path.join(self.stress_results, files[-1])
@@ -370,10 +473,7 @@ class MyPostgresEnv:
         return metrics
 
     def save_running_res(self, metrics):
-        if self.workload.startswith("benchbase"):
-            save_info = json.dumps(metrics)
-            with open(self.metric_save_path, 'a+') as f:
-                f.write(save_info + '\n')
-                f.flush()
-        else:
-            pass
+        save_info = json.dumps(metrics)
+        with open(self.metric_save_path, 'a+') as f:
+            f.write(save_info + '\n')
+            f.flush()

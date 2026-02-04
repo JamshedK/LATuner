@@ -60,6 +60,8 @@ class ManualWorkloadRunner:
         self.sql_list_idx = {}
         self.stop_event = threading.Event()
 
+        print(f'Database Config: {self.db_name} with user {self.db_user} on {self.db_host}:{self.db_port}')
+
     def get_connection(self):
         """Create new DB connection"""
         conn = psycopg2.connect(
@@ -141,6 +143,15 @@ class ManualWorkloadRunner:
         # Calculate results
         total_queries = sum(ts[0] for ts in time_stamp.values())
         throughput = total_queries / total_execution_time if total_execution_time > 0 else 0
+        
+        # Detect failure and apply penalty
+        if total_queries == 0 or throughput == 0:
+            penalty_time = self.timeout * 2
+            print(f"\n{'='*50}")
+            print(f"❌ WORKLOAD FAILED - No queries completed!")
+            print(f"Applying penalty: throughput=0, time={penalty_time}s")
+            print(f"{'='*50}")
+            return 0, penalty_time
         
         print(f"\n{'='*50}")
         print(f"Total queries: {total_queries}")

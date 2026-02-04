@@ -11,7 +11,7 @@ def parse_results_file(file_path):
             if line.strip():
                 data = json.loads(line)
                 goodput = data.get('Goodput (requests/second)', 0)
-                avg_latency = data.get('Latency Distribution', {}).get('Average Latency (microseconds)', 0)
+                avg_latency = data.get('Total Execution Time', 0)
                 knobs = data.get('knobs')
                 results.append({
                     'goodput': goodput,
@@ -133,8 +133,8 @@ def plot_improvement_from_baseline(file_path, metric='tps'):
         plt.savefig('tuning_improvement_tps.png', dpi=300, bbox_inches='tight')
         print("Graph saved as 'tuning_improvement_tps.png'")
     else:
-        print(f"Baseline Latency: {baseline_value:.0f} μs ({baseline_value/1000:.1f} ms)")
-        print(f"Best Latency: {min(metric_values):.0f} μs ({min(metric_values)/1000:.1f} ms)")
+        print(f"Baseline Latency: {baseline_value:.2f} μs ({baseline_value/1000:.1f} ms)")
+        print(f"Best Latency: {min(metric_values):.2f} μs ({min(metric_values)/1000:.1f} ms)")
         print(f"Maximum improvement: +{max_improvement:.1f}% (lower latency)")
         print(f"Final improvement: +{final_improvement:.1f}% (lower latency)")
         print(f"Total trials: {len(metric_values)}")
@@ -150,7 +150,9 @@ if __name__ == "__main__":
     
     # Define file paths for both workloads
     tpcc_file_path = "/home/karimnazarovj/LATuner/Tuning/benchbase_tpcc_50_16_1761509323.299166/results_tps.res"
-    tpch_file_path = "/home/karimnazarovj/LATuner/Tuning/benchbase_tpch_10_template_1761514017.0488439/results_lat.res"
+    tpch_file_path = "/home/karimnazarovj/LATuner/final_data/tpch/increase_data_size/22_queries_13gb/manual_test1/results_lat.res"
+    tpch_file_path_2 = "/home/karimnazarovj/LATuner/final_data/tpch/increase_data_size/22_queries_13gb/manual_test2/results_lat.res"
+    tpch_file_path_3 = "/home/karimnazarovj/LATuner/final_data/tpch/increase_data_size/22_queries_13gb/manual_test3/results_lat.res"
     
     plots_generated = 0
     
@@ -170,6 +172,10 @@ if __name__ == "__main__":
     if os.path.exists(tpch_file_path):
         print("=== TPC-H Average Latency Results ===")
         plot_improvement_from_baseline(tpch_file_path, metric='latency')
+        print ("\n------------")
+        plot_improvement_from_baseline(tpch_file_path_2, metric='latency')
+        print ("\n------------")
+        plot_improvement_from_baseline(tpch_file_path_3, metric='latency')
         plots_generated += 1
     else:
         print(f"TPC-H file not found: {tpch_file_path}")

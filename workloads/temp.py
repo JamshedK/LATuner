@@ -1,7 +1,7 @@
 import os
 
 queries_dir = './queries_out'
-output_file = './tpch_220.sql'
+output_file = './tpch_4400.sql'
 
 with open(output_file, 'w') as out:
     for i in range(1, 23):

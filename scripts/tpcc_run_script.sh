@@ -1,5 +1,5 @@
 #!/bin/bash
-# LATuner TPC-H run script
+# LATuner TPC-C run script
 
 # Create logs directory if it doesn't exist
 mkdir -p logs
@@ -7,10 +7,10 @@ mkdir -p logs
 # Kill any existing processes first
 pkill -f "main.py" 2>/dev/null
 
-echo "Starting LATuner TPC-H optimization runs..."
+echo "Starting LATuner TPC-C optimization runs..."
 
 # Run 3 trials sequentially
-for trial in 1 2 3; do
+for trial in 1 2 3 4; do
     logfile="logs/latuner_test${trial}.log"
     
     echo "==================================="

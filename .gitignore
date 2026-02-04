@@ -24,3 +24,6 @@ build/
 
 # Environment files
 .env
+
+# data
+/final_data
