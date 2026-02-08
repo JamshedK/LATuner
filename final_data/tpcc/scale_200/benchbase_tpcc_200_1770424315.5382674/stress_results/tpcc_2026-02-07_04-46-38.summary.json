@@ -1,0 +1,25 @@
+{
+ "Start timestamp (milliseconds)": 1770439476147,
+ "Current Timestamp (milliseconds)": 1770439599317,
+ "Elapsed Time (nanoseconds)": 120998724679,
+ "DBMS Type": "POSTGRES",
+ "DBMS Version": "PostgreSQL 14.20 (Ubuntu 14.20-0ubuntu0.22.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit",
+ "Benchmark Type": "tpcc",
+ "Measured Requests": 197453,
+ "isolation": "TRANSACTION_SERIALIZABLE",
+ "scalefactor": "200",
+ "terminals": "16",
+ "Latency Distribution": {
+  "95th Percentile Latency (microseconds)": 24135,
+  "Maximum Latency (microseconds)": 151671,
+  "Median Latency (microseconds)": 7963,
+  "Minimum Latency (microseconds)": 317,
+  "25th Percentile Latency (microseconds)": 4021,
+  "90th Percentile Latency (microseconds)": 21624,
+  "99th Percentile Latency (microseconds)": 35225,
+  "75th Percentile Latency (microseconds)": 12869,
+  "Average Latency (microseconds)": 9796
+ },
+ "Throughput (requests/second)": 1631.860174756611,
+ "Goodput (requests/second)": 1631.1246298140002
+}
