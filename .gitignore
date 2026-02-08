@@ -20,10 +20,8 @@ build/
 .idea/
 
 # Log files
-*.log
 
 # Environment files
 .env
 
 # data
-/final_data

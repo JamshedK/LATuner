@@ -1,0 +1,4017 @@
+Starting LATuner Trial 2 at Tue Jan 27 01:36:15 UTC 2026
+Start time: 2026-01-27 01:36:15
+Start time (Unix): 1769477775
+
+{'host': 'localhost', 'port': '5432', 'database_name': 'tpch_1_template', 'user': 'postgres', 'password': '123456', 'data_path': '/var/lib/postgresql/14/main', 'workload': 'manual', 'objective': 'lat', 'method': 'llm_end2end', 'stress_test_duration': '30'}
+main.py:15: DeprecationWarning: The 'warn' method is deprecated, use 'warning' instead
+  logger.warn("llm end2end tuning begin!!!")
+Found 5 knobs from LLM response: ['max_connections', 'shared_buffers', 'effective_cache_size', 'maintenance_work_mem', 'work_mem']
+Expected 5 knobs, LLM response: ```json
+{
+  "shared_buffers": 8192,
+  "work_mem": 65536,
+  "effective_cache_size": 16384,
+  "maintenance_work_mem": 16384,
+  "max_connections": 200
+}
+```
+[
+    {"max_connections": 200, "shared_buffers": 8192, "effective_cache_size": 16384, "maintenance_work_mem": 16384, "work_mem": 65536},
+    {"max_connections": 300, "shared_buffers": 4096, "effective_cache_size": 8192, "maintenance_work_mem": 8192, "work_mem": 131072},
+    {"max_connections": 100, "shared_buffers": 16384, "effective_cache_size": 32768, "maintenance_work_mem": 32768, "work_mem": 32768},
+    {"max_connections": 150, "shared_buffers": 4096, "effective_cache_size": 49152, "maintenance_work_mem": 65536, "work_mem": 262144},
+    {"max_connections": 200, "shared_buffers": 8192, "effective_cache_size": 32768, "maintenance_work_mem": 16384, "work_mem": 131072},
+    {"max_connections": 300, "shared_buffers": 16384, "effective_cache_size": 65536, "maintenance_work_mem": 65536, "work_mem": 65536},
+    {"max_connections": 100, "shared_buffers": 4096, "effective_cache_size": 16384, "maintenance_work_mem": 32768, "work_mem": 262144},
+    {"max_connections": 150, "shared_buffers": 8192, "effective_cache_size": 49152, "maintenance_work_mem": 16384, "work_mem": 32768},
+    {"max_connections": 200, "shared_buffers": 16384, "effective_cache_size": 32768, "maintenance_work_mem": 65536, "work_mem": 131072},
+    {"max_connections": 300, "shared_buffers": 8192, "effective_cache_size": 65536, "maintenance_work_mem": 32768, "work_mem": 65536}
+]
+
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.70s
+Thread 0: Query 2 executed in 0.38s
+Thread 0: Query 3 executed in 0.37s
+Thread 0: Query 4 executed in 0.21s
+Thread 0: Query 5 executed in 0.49s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.93s
+Thread 0: Query 10 executed in 0.38s
+Thread 0: Query 11 executed in 0.10s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 0.51s
+Thread 0: Query 14 executed in 0.27s
+Thread 0: Query 15 executed in 0.65s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.90s
+Thread 0: Query 18 executed in 2.50s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.53s
+Thread 0: Query 21 executed in 0.50s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 14.21s
+Throughput: 1.55 queries/sec
+==================================================
+Set max_connections = 200
+Set shared_buffers = 8192
+Set effective_cache_size = 16384
+Set maintenance_work_mem = 16384
+Set work_mem = 65536
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.24s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.57s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.45s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.84s
+Thread 0: Query 10 executed in 0.53s
+Thread 0: Query 11 executed in 0.15s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 2.00s
+Thread 0: Query 18 executed in 2.72s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.75s
+Thread 0: Query 21 executed in 0.61s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 16.06s
+Throughput: 1.37 queries/sec
+==================================================
+Set max_connections = 300
+Set shared_buffers = 4096
+Set effective_cache_size = 8192
+Set maintenance_work_mem = 8192
+Set work_mem = 131072
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.73s
+Thread 0: Query 2 executed in 0.24s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.55s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.45s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.86s
+Thread 0: Query 10 executed in 0.57s
+Thread 0: Query 11 executed in 0.15s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.90s
+Thread 0: Query 18 executed in 5.35s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.97s
+Thread 0: Query 21 executed in 0.59s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 18.80s
+Throughput: 1.17 queries/sec
+==================================================
+Set max_connections = 100
+Set shared_buffers = 16384
+Set effective_cache_size = 32768
+Set maintenance_work_mem = 32768
+Set work_mem = 32768
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.27s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.48s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.89s
+Thread 0: Query 10 executed in 0.56s
+Thread 0: Query 11 executed in 0.11s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 1.57s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.92s
+Thread 0: Query 18 executed in 2.65s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.69s
+Thread 0: Query 21 executed in 0.61s
+Thread 0: Query 22 executed in 0.10s
+
+==================================================
+Total queries: 22
+Total execution time: 15.72s
+Throughput: 1.40 queries/sec
+==================================================
+Set max_connections = 150
+Set shared_buffers = 4096
+Set effective_cache_size = 49152
+Set maintenance_work_mem = 65536
+Set work_mem = 262144
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.71s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.25s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.48s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.86s
+Thread 0: Query 10 executed in 0.51s
+Thread 0: Query 11 executed in 0.17s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.65s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.87s
+Thread 0: Query 18 executed in 4.31s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.64s
+Thread 0: Query 21 executed in 0.58s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 17.31s
+Throughput: 1.27 queries/sec
+==================================================
+Set max_connections = 200
+Set shared_buffers = 8192
+Set effective_cache_size = 32768
+Set maintenance_work_mem = 16384
+Set work_mem = 131072
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.74s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.20s
+Thread 0: Query 5 executed in 0.25s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.91s
+Thread 0: Query 10 executed in 0.55s
+Thread 0: Query 11 executed in 0.14s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 1.61s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.90s
+Thread 0: Query 18 executed in 5.47s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.68s
+Thread 0: Query 21 executed in 0.59s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 18.64s
+Throughput: 1.18 queries/sec
+==================================================
+Set max_connections = 300
+Set shared_buffers = 16384
+Set effective_cache_size = 65536
+Set maintenance_work_mem = 65536
+Set work_mem = 65536
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.73s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.20s
+Thread 0: Query 5 executed in 0.26s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.90s
+Thread 0: Query 10 executed in 0.40s
+Thread 0: Query 11 executed in 0.13s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 2.01s
+Thread 0: Query 18 executed in 2.87s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.74s
+Thread 0: Query 21 executed in 0.63s
+Thread 0: Query 22 executed in 0.10s
+
+==================================================
+Total queries: 22
+Total execution time: 16.06s
+Throughput: 1.37 queries/sec
+==================================================
+Set max_connections = 100
+Set shared_buffers = 4096
+Set effective_cache_size = 16384
+Set maintenance_work_mem = 32768
+Set work_mem = 262144
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.71s
+Thread 0: Query 2 executed in 0.24s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.58s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.46s
+Thread 0: Query 8 executed in 0.23s
+Thread 0: Query 9 executed in 0.83s
+Thread 0: Query 10 executed in 0.53s
+Thread 0: Query 11 executed in 0.17s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.65s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.88s
+Thread 0: Query 18 executed in 4.18s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 2.08s
+Thread 0: Query 21 executed in 0.62s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 17.83s
+Throughput: 1.23 queries/sec
+==================================================
+Set max_connections = 150
+Set shared_buffers = 8192
+Set effective_cache_size = 49152
+Set maintenance_work_mem = 16384
+Set work_mem = 32768
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.39s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.26s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.45s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.88s
+Thread 0: Query 10 executed in 0.56s
+Thread 0: Query 11 executed in 0.16s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.90s
+Thread 0: Query 18 executed in 2.75s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.73s
+Thread 0: Query 21 executed in 0.62s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.94s
+Throughput: 1.38 queries/sec
+==================================================
+Set max_connections = 200
+Set shared_buffers = 16384
+Set effective_cache_size = 32768
+Set maintenance_work_mem = 65536
+Set work_mem = 131072
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.71s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.53s
+Thread 0: Query 4 executed in 0.21s
+Thread 0: Query 5 executed in 0.24s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.23s
+Thread 0: Query 9 executed in 0.90s
+Thread 0: Query 10 executed in 0.56s
+Thread 0: Query 11 executed in 0.11s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.90s
+Thread 0: Query 18 executed in 5.41s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.64s
+Thread 0: Query 21 executed in 0.62s
+Thread 0: Query 22 executed in 0.10s
+
+==================================================
+Total queries: 22
+Total execution time: 18.48s
+Throughput: 1.19 queries/sec
+==================================================
+Set max_connections = 300
+Set shared_buffers = 8192
+Set effective_cache_size = 65536
+Set maintenance_work_mem = 32768
+Set work_mem = 65536
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.39s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.25s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.93s
+Thread 0: Query 10 executed in 0.38s
+Thread 0: Query 11 executed in 0.17s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 1.62s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.99s
+Thread 0: Query 18 executed in 2.75s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.74s
+Thread 0: Query 21 executed in 0.62s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.98s
+Throughput: 1.38 queries/sec
+==================================================
+15.722130537033081
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 4194304
+Set effective_cache_size = 623155441
+Set maintenance_work_mem = 13892417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.51s
+Thread 0: Query 3 executed in 0.68s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.43s
+Thread 0: Query 10 executed in 0.37s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 0.87s
+Thread 0: Query 14 executed in 0.59s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 7.10s
+Thread 0: Query 18 executed in 2.03s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.18s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 20.31s
+Throughput: 1.08 queries/sec
+==================================================
+15.722130537033081
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 1024
+Set effective_cache_size = 1
+Set maintenance_work_mem = 900891154
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.73s
+Thread 0: Query 2 executed in 0.56s
+Thread 0: Query 3 executed in 0.81s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.91s
+Thread 0: Query 8 executed in 0.26s
+Thread 0: Query 9 executed in 2.70s
+Thread 0: Query 10 executed in 0.67s
+Thread 0: Query 11 executed in 0.13s
+Thread 0: Query 12 executed in 0.54s
+Thread 0: Query 13 executed in 1.79s
+Thread 0: Query 14 executed in 0.60s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.30s
+Thread 0: Query 17 executed in 2.14s
+Thread 0: Query 18 executed in 2.95s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.38s
+Thread 0: Query 21 executed in 0.80s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 19.83s
+Throughput: 1.11 queries/sec
+==================================================
+15.722130537033081
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 1024
+Set effective_cache_size = 1
+Set maintenance_work_mem = 1024
+Set work_mem = 793762023
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.71s
+Thread 0: Query 2 executed in 0.23s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.16s
+Thread 0: Query 5 executed in 0.50s
+Thread 0: Query 6 executed in 0.26s
+Thread 0: Query 7 executed in 0.43s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.88s
+Thread 0: Query 10 executed in 0.53s
+Thread 0: Query 11 executed in 0.14s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.55s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.87s
+Thread 0: Query 18 executed in 3.27s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 2.25s
+Thread 0: Query 21 executed in 0.57s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 16.77s
+Throughput: 1.31 queries/sec
+==================================================
+15.722130537033081
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 1024
+Set effective_cache_size = 680354240
+Set maintenance_work_mem = 1024
+Set work_mem = 580143662
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.73s
+Thread 0: Query 2 executed in 0.29s
+Thread 0: Query 3 executed in 0.37s
+Thread 0: Query 4 executed in 0.15s
+Thread 0: Query 5 executed in 0.56s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.43s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.80s
+Thread 0: Query 10 executed in 0.38s
+Thread 0: Query 11 executed in 0.17s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.55s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.86s
+Thread 0: Query 18 executed in 3.06s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.65s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.62s
+Throughput: 1.41 queries/sec
+==================================================
+15.616884469985962
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 543
+Set shared_buffers = 1024
+Set effective_cache_size = 839997889
+Set maintenance_work_mem = 1024
+Set work_mem = 740379741
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.73s
+Thread 0: Query 2 executed in 0.30s
+Thread 0: Query 3 executed in 0.37s
+Thread 0: Query 4 executed in 0.16s
+Thread 0: Query 5 executed in 0.43s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.53s
+Thread 0: Query 8 executed in 0.25s
+Thread 0: Query 9 executed in 0.88s
+Thread 0: Query 10 executed in 0.37s
+Thread 0: Query 11 executed in 0.16s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.87s
+Thread 0: Query 18 executed in 3.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.63s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.71s
+Throughput: 1.40 queries/sec
+==================================================
+15.616884469985962
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 1024
+Set effective_cache_size = 967450880
+Set maintenance_work_mem = 1024
+Set work_mem = 978308706
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.76s
+Thread 0: Query 2 executed in 0.31s
+Thread 0: Query 3 executed in 0.35s
+Thread 0: Query 4 executed in 0.14s
+Thread 0: Query 5 executed in 0.44s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.55s
+Thread 0: Query 8 executed in 0.23s
+Thread 0: Query 9 executed in 0.89s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.16s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 1.63s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.91s
+Thread 0: Query 18 executed in 3.23s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.63s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 16.08s
+Throughput: 1.37 queries/sec
+==================================================
+15.616884469985962
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 196
+Set shared_buffers = 1024
+Set effective_cache_size = 1101474924
+Set maintenance_work_mem = 1024
+Set work_mem = 356220473
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.74s
+Thread 0: Query 2 executed in 0.31s
+Thread 0: Query 3 executed in 0.35s
+Thread 0: Query 4 executed in 0.14s
+Thread 0: Query 5 executed in 0.48s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.47s
+Thread 0: Query 8 executed in 0.17s
+Thread 0: Query 9 executed in 0.79s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.16s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 1.57s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.85s
+Thread 0: Query 18 executed in 3.09s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.66s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.56s
+Throughput: 1.41 queries/sec
+==================================================
+15.562489986419678
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 252
+Set shared_buffers = 597715
+Set effective_cache_size = 984986159
+Set maintenance_work_mem = 1024
+Set work_mem = 513693036
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.53s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.53s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.85s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.41s
+Throughput: 1.43 queries/sec
+==================================================
+15.40885877609253
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 681
+Set shared_buffers = 316880
+Set effective_cache_size = 1259378744
+Set maintenance_work_mem = 1024
+Set work_mem = 496660034
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.74s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.68s
+Thread 0: Query 4 executed in 0.22s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.54s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.65s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.91s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.27s
+Throughput: 1.44 queries/sec
+==================================================
+15.272969722747803
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 218
+Set shared_buffers = 376622
+Set effective_cache_size = 1531053567
+Set maintenance_work_mem = 1024
+Set work_mem = 577953326
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.83s
+Thread 0: Query 4 executed in 0.21s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.30s
+Thread 0: Query 7 executed in 0.40s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.84s
+Thread 0: Query 18 executed in 2.86s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.52s
+Throughput: 1.42 queries/sec
+==================================================
+15.272969722747803
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 719
+Set shared_buffers = 703637
+Set effective_cache_size = 1206126264
+Set maintenance_work_mem = 1024
+Set work_mem = 755987753
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.87s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.28s
+Throughput: 1.44 queries/sec
+==================================================
+15.272969722747803
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 869
+Set shared_buffers = 35213
+Set effective_cache_size = 1422797183
+Set maintenance_work_mem = 1024
+Set work_mem = 654483884
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.37s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.23s
+Thread 0: Query 5 executed in 0.35s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.48s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.82s
+Thread 0: Query 10 executed in 0.40s
+Thread 0: Query 11 executed in 0.12s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.62s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.86s
+Thread 0: Query 18 executed in 3.08s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.63s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.98s
+Throughput: 1.38 queries/sec
+==================================================
+15.272969722747803
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 289
+Set shared_buffers = 809659
+Set effective_cache_size = 1171029503
+Set maintenance_work_mem = 1024
+Set work_mem = 617772781
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.55s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.82s
+Thread 0: Query 18 executed in 2.82s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.34s
+Throughput: 1.43 queries/sec
+==================================================
+15.272969722747803
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 621
+Set shared_buffers = 694159
+Set effective_cache_size = 1151854854
+Set maintenance_work_mem = 1024
+Set work_mem = 328962188
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.98s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.43s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.26s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.65s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.82s
+Thread 0: Query 18 executed in 2.84s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.00s
+Throughput: 1.47 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 529
+Set shared_buffers = 754619
+Set effective_cache_size = 1426306849
+Set maintenance_work_mem = 1024
+Set work_mem = 64982689
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.63s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.84s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.47s
+Throughput: 1.42 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 551
+Set shared_buffers = 700842
+Set effective_cache_size = 1271388415
+Set maintenance_work_mem = 232954976
+Set work_mem = 477517905
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.16s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.52s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.50s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.36s
+Throughput: 1.43 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 772501
+Set effective_cache_size = 1226668972
+Set maintenance_work_mem = 1024
+Set work_mem = 239252736
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.54s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.13s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 862
+Set shared_buffers = 867915
+Set effective_cache_size = 983122770
+Set maintenance_work_mem = 1024
+Set work_mem = 331976894
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.37s
+Thread 0: Query 3 executed in 0.54s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.81s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.23s
+Throughput: 1.44 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 676
+Set shared_buffers = 1171597
+Set effective_cache_size = 1474636909
+Set maintenance_work_mem = 1024
+Set work_mem = 507400857
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.16s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 417
+Set shared_buffers = 1086073
+Set effective_cache_size = 1119709183
+Set maintenance_work_mem = 1024
+Set work_mem = 464514513
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.64s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.45s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.78s
+Thread 0: Query 18 executed in 2.85s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.44s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.07s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1074
+Set shared_buffers = 991068
+Set effective_cache_size = 1318229464
+Set maintenance_work_mem = 1024
+Set work_mem = 373355381
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.75s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.15s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 850
+Set shared_buffers = 1063988
+Set effective_cache_size = 1033857536
+Set maintenance_work_mem = 1024
+Set work_mem = 646683500
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.54s
+Thread 0: Query 4 executed in 0.16s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.52s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.82s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.45s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.20s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 575
+Set shared_buffers = 883054
+Set effective_cache_size = 1214372479
+Set maintenance_work_mem = 1024
+Set work_mem = 356075701
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.49s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.84s
+Thread 0: Query 18 executed in 2.81s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.10s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 362
+Set shared_buffers = 1090976
+Set effective_cache_size = 1475736831
+Set maintenance_work_mem = 1024
+Set work_mem = 529941455
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.14s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.50s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.82s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.18s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 777
+Set shared_buffers = 1047297
+Set effective_cache_size = 1391105279
+Set maintenance_work_mem = 163474241
+Set work_mem = 451307794
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.54s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.75s
+Thread 0: Query 18 executed in 2.76s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.07s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 682
+Set shared_buffers = 864742
+Set effective_cache_size = 1301327231
+Set maintenance_work_mem = 1024
+Set work_mem = 395015156
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.07s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.52s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.73s
+Thread 0: Query 18 executed in 2.78s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.16s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1134
+Set shared_buffers = 1146492
+Set effective_cache_size = 1559530078
+Set maintenance_work_mem = 1024
+Set work_mem = 711675904
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.07s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.52s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.78s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.51s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.18s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 938
+Set shared_buffers = 995339
+Set effective_cache_size = 1737826175
+Set maintenance_work_mem = 1024
+Set work_mem = 303441974
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.07s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.28s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.75s
+Thread 0: Query 18 executed in 2.81s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.45s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.03s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 725
+Set shared_buffers = 908499
+Set effective_cache_size = 1537086207
+Set maintenance_work_mem = 1024
+Set work_mem = 459096146
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.46s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.84s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.14s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 149
+Set shared_buffers = 8191
+Set effective_cache_size = 49152
+Set maintenance_work_mem = 16384
+Set work_mem = 32768
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.74s
+Thread 0: Query 2 executed in 0.38s
+Thread 0: Query 3 executed in 0.45s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.25s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.45s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.88s
+Thread 0: Query 10 executed in 0.57s
+Thread 0: Query 11 executed in 0.15s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 1.46s
+Thread 0: Query 14 executed in 0.28s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.71s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.63s
+Thread 0: Query 21 executed in 0.57s
+Thread 0: Query 22 executed in 0.10s
+
+==================================================
+Total queries: 22
+Total execution time: 15.42s
+Throughput: 1.43 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 676
+Set shared_buffers = 1086117
+Set effective_cache_size = 1809324543
+Set maintenance_work_mem = 176224235
+Set work_mem = 533492591
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.52s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.45s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.06s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1235
+Set shared_buffers = 1000591
+Set effective_cache_size = 1614200831
+Set maintenance_work_mem = 168750911
+Set work_mem = 375147572
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.49s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.65s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.49s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.51s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.07s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 836
+Set shared_buffers = 964796
+Set effective_cache_size = 1518944895
+Set maintenance_work_mem = 134170583
+Set work_mem = 563783662
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.33s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.15s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 785
+Set shared_buffers = 1274982
+Set effective_cache_size = 1650472673
+Set maintenance_work_mem = 90952531
+Set work_mem = 218895072
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.56s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.43s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.10s
+Throughput: 1.46 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 783
+Set shared_buffers = 1007096
+Set effective_cache_size = 1999976017
+Set maintenance_work_mem = 1024
+Set work_mem = 405945554
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.00s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.45s
+Thread 0: Query 4 executed in 0.21s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.55s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.23s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.14s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 50
+Set shared_buffers = 4194304
+Set effective_cache_size = 623155441
+Set maintenance_work_mem = 13892417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.52s
+Thread 0: Query 3 executed in 0.67s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.40s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 0.80s
+Thread 0: Query 14 executed in 0.59s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.31s
+Thread 0: Query 17 executed in 6.73s
+Thread 0: Query 18 executed in 2.04s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.17s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.80s
+Throughput: 1.11 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 908
+Set shared_buffers = 918352
+Set effective_cache_size = 1579307519
+Set maintenance_work_mem = 1024
+Set work_mem = 369908724
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.57s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.30s
+Throughput: 1.44 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 374
+Set shared_buffers = 1029962
+Set effective_cache_size = 1728805631
+Set maintenance_work_mem = 139146269
+Set work_mem = 359701109
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.53s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.55s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.81s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.25s
+Throughput: 1.44 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1206
+Set shared_buffers = 1379426
+Set effective_cache_size = 1906163583
+Set maintenance_work_mem = 167683775
+Set work_mem = 697281770
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.20s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.33s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.50s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.16s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 649
+Set shared_buffers = 1248323
+Set effective_cache_size = 1702790655
+Set maintenance_work_mem = 66034996
+Set work_mem = 779505832
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.37s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.65s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.82s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.20s
+Throughput: 1.45 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1507
+Set shared_buffers = 1335568
+Set effective_cache_size = 1775052415
+Set maintenance_work_mem = 6078048
+Set work_mem = 349922005
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.54s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.81s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.55s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.30s
+Throughput: 1.44 queries/sec
+==================================================
+15.003377676010132
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 960
+Set shared_buffers = 1298427
+Set effective_cache_size = 1480886740
+Set maintenance_work_mem = 137626253
+Set work_mem = 485035913
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.08s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.49s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.44s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.81s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.00s
+Throughput: 1.47 queries/sec
+==================================================
+14.998041868209839
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1213
+Set shared_buffers = 958964
+Set effective_cache_size = 2072491903
+Set maintenance_work_mem = 234612512
+Set work_mem = 365938452
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.62s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.78s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.19s
+Throughput: 1.45 queries/sec
+==================================================
+14.998041868209839
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1130
+Set shared_buffers = 988701
+Set effective_cache_size = 1603489023
+Set maintenance_work_mem = 146683145
+Set work_mem = 579088046
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.26s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.67s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.81s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.42s
+Throughput: 1.43 queries/sec
+==================================================
+14.998041868209839
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 773
+Set shared_buffers = 1491083
+Set effective_cache_size = 2146261980
+Set maintenance_work_mem = 120889172
+Set work_mem = 302485998
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.99s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.42s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.78s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.45s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 14.91s
+Throughput: 1.48 queries/sec
+==================================================
+14.91397213935852
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.48s
+Thread 0: Query 3 executed in 0.64s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.35s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.40s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.77s
+Thread 0: Query 14 executed in 0.57s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.28s
+Thread 0: Query 17 executed in 6.33s
+Thread 0: Query 18 executed in 2.06s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.18s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.32s
+Throughput: 1.14 queries/sec
+==================================================
+14.91397213935852
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 774
+Set shared_buffers = 1525962
+Set effective_cache_size = 1975321175
+Set maintenance_work_mem = 1024
+Set work_mem = 531287083
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.99s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.52s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.78s
+Thread 0: Query 18 executed in 2.81s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.45s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.02s
+Throughput: 1.47 queries/sec
+==================================================
+14.91397213935852
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 797
+Set shared_buffers = 1423208
+Set effective_cache_size = 1831156095
+Set maintenance_work_mem = 1024
+Set work_mem = 498212208
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.08s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.28s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.33s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.65s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.61s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.78s
+Thread 0: Query 18 executed in 2.85s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.19s
+Throughput: 1.45 queries/sec
+==================================================
+14.91397213935852
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 943
+Set shared_buffers = 1123639
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 29184915
+Set work_mem = 545775071
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.49s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.52s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.75s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.43s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.15s
+Throughput: 1.45 queries/sec
+==================================================
+14.91397213935852
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843247
+Set work_mem = 704
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.09s
+Thread 0: Query 2 executed in 0.40s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.74s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 0.57s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.68s
+Thread 0: Query 16 executed in 0.26s
+Thread 0: Query 17 executed in 2.49s
+Thread 0: Query 18 executed in 2.03s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.10s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 13.92s
+Throughput: 1.58 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412957
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 200681564
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.49s
+Thread 0: Query 3 executed in 0.68s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.51s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 0.76s
+Thread 0: Query 14 executed in 0.63s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.28s
+Thread 0: Query 17 executed in 6.63s
+Thread 0: Query 18 executed in 2.05s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.79s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.49s
+Thread 0: Query 3 executed in 0.66s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 1.41s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 0.73s
+Thread 0: Query 14 executed in 0.54s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.28s
+Thread 0: Query 17 executed in 6.63s
+Thread 0: Query 18 executed in 2.01s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.45s
+Throughput: 1.13 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2530
+Set shared_buffers = 995360
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 1024
+Set work_mem = 816276519
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.33s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.53s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.78s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.47s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.05s
+Throughput: 1.46 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2843
+Set shared_buffers = 1203307
+Set effective_cache_size = 1084309631
+Set maintenance_work_mem = 1024
+Set work_mem = 723468778
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.06s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.84s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.23s
+Throughput: 1.44 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2335
+Set shared_buffers = 2251380
+Set effective_cache_size = 1908288383
+Set maintenance_work_mem = 1024
+Set work_mem = 972613858
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.53s
+Thread 0: Query 13 executed in 1.57s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.86s
+Thread 0: Query 18 executed in 2.80s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.51s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.39s
+Throughput: 1.43 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 969
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843416
+Set work_mem = 703
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.41s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.18s
+Thread 0: Query 9 executed in 0.76s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 0.57s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.67s
+Thread 0: Query 16 executed in 0.26s
+Thread 0: Query 17 executed in 2.50s
+Thread 0: Query 18 executed in 2.07s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.09s
+Thread 0: Query 21 executed in 0.45s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 14.03s
+Throughput: 1.57 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.08s
+Thread 0: Query 2 executed in 0.50s
+Thread 0: Query 3 executed in 0.67s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.44s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.82s
+Thread 0: Query 14 executed in 0.60s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.30s
+Thread 0: Query 17 executed in 6.75s
+Thread 0: Query 18 executed in 2.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.86s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.53s
+Thread 0: Query 3 executed in 0.65s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 1.43s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.78s
+Thread 0: Query 14 executed in 0.59s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.60s
+Thread 0: Query 18 executed in 2.00s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.20s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.65s
+Throughput: 1.12 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2742
+Set shared_buffers = 54097
+Set effective_cache_size = 1706875437
+Set maintenance_work_mem = 1024
+Set work_mem = 564014668
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.72s
+Thread 0: Query 2 executed in 0.34s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.23s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.43s
+Thread 0: Query 8 executed in 0.23s
+Thread 0: Query 9 executed in 0.89s
+Thread 0: Query 10 executed in 0.39s
+Thread 0: Query 11 executed in 0.12s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.59s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.86s
+Thread 0: Query 18 executed in 3.04s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.63s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.91s
+Throughput: 1.38 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.49s
+Thread 0: Query 3 executed in 0.64s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 1.40s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 0.87s
+Thread 0: Query 14 executed in 0.58s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.28s
+Thread 0: Query 17 executed in 6.66s
+Thread 0: Query 18 executed in 2.08s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 19.79s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.51s
+Thread 0: Query 3 executed in 0.66s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.41s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.74s
+Thread 0: Query 14 executed in 0.59s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.63s
+Thread 0: Query 18 executed in 2.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.17s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.59s
+Throughput: 1.12 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1525962
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 1024
+Set work_mem = 128
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.48s
+Thread 0: Query 3 executed in 0.66s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.12s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.43s
+Thread 0: Query 13 executed in 0.90s
+Thread 0: Query 14 executed in 0.44s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.28s
+Thread 0: Query 17 executed in 6.69s
+Thread 0: Query 18 executed in 2.03s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.21s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 19.42s
+Throughput: 1.13 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2330
+Set shared_buffers = 1418226
+Set effective_cache_size = 1727860095
+Set maintenance_work_mem = 576999852
+Set work_mem = 820426087
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.67s
+Thread 0: Query 10 executed in 0.32s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.27s
+Throughput: 1.44 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412129
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.50s
+Thread 0: Query 3 executed in 0.66s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.44s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 0.80s
+Thread 0: Query 14 executed in 0.63s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.79s
+Thread 0: Query 18 executed in 2.05s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.21s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.97s
+Throughput: 1.10 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2527
+Set shared_buffers = 2094134
+Set effective_cache_size = 1805273855
+Set maintenance_work_mem = 1024
+Set work_mem = 620457453
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.49s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.29s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.64s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.54s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.76s
+Thread 0: Query 18 executed in 2.82s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.15s
+Throughput: 1.45 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 969
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.23s
+Thread 0: Query 2 executed in 0.51s
+Thread 0: Query 3 executed in 0.65s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.43s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 0.82s
+Thread 0: Query 14 executed in 0.62s
+Thread 0: Query 15 executed in 0.67s
+Thread 0: Query 16 executed in 0.33s
+Thread 0: Query 17 executed in 6.95s
+Thread 0: Query 18 executed in 2.09s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.20s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 20.39s
+Throughput: 1.08 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 929
+Set shared_buffers = 1258291
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 524288
+Set work_mem = 3637247
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.19s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.50s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.39s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.09s
+Thread 0: Query 12 executed in 0.53s
+Thread 0: Query 13 executed in 1.62s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.85s
+Thread 0: Query 18 executed in 2.89s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.79s
+Throughput: 1.39 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.52s
+Thread 0: Query 3 executed in 0.68s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.35s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 1.45s
+Thread 0: Query 10 executed in 0.37s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.47s
+Thread 0: Query 13 executed in 0.92s
+Thread 0: Query 14 executed in 0.62s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.30s
+Thread 0: Query 17 executed in 6.73s
+Thread 0: Query 18 executed in 2.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 20.13s
+Throughput: 1.09 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412129
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.50s
+Thread 0: Query 3 executed in 0.67s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.43s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 0.90s
+Thread 0: Query 14 executed in 0.59s
+Thread 0: Query 15 executed in 0.65s
+Thread 0: Query 16 executed in 0.30s
+Thread 0: Query 17 executed in 6.82s
+Thread 0: Query 18 executed in 2.06s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 20.12s
+Throughput: 1.09 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 968
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843417
+Set work_mem = 703
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.17s
+Thread 0: Query 2 executed in 0.42s
+Thread 0: Query 3 executed in 0.46s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.78s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.52s
+Thread 0: Query 13 executed in 0.60s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.68s
+Thread 0: Query 16 executed in 0.25s
+Thread 0: Query 17 executed in 2.51s
+Thread 0: Query 18 executed in 2.01s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.12s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 14.19s
+Throughput: 1.55 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1886
+Set shared_buffers = 1971029
+Set effective_cache_size = 893367040
+Set maintenance_work_mem = 204749710
+Set work_mem = 915812516
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.69s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.82s
+Thread 0: Query 18 executed in 2.90s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.53s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.54s
+Throughput: 1.42 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 968
+Set shared_buffers = 1412131
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.14s
+Thread 0: Query 2 executed in 0.50s
+Thread 0: Query 3 executed in 0.65s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.39s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.45s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.86s
+Thread 0: Query 14 executed in 0.62s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.58s
+Thread 0: Query 18 executed in 2.07s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.20s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.82s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1814
+Set shared_buffers = 835884
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 271580990
+Set work_mem = 1125698845
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.14s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.65s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.89s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.51s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.56s
+Throughput: 1.41 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1040
+Set shared_buffers = 2343197
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 445267243
+Set work_mem = 915436196
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.15s
+Thread 0: Query 2 executed in 0.38s
+Thread 0: Query 3 executed in 0.49s
+Thread 0: Query 4 executed in 0.20s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.29s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.22s
+Thread 0: Query 9 executed in 0.75s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.95s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.55s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 15.87s
+Throughput: 1.39 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 3000
+Set shared_buffers = 863292
+Set effective_cache_size = 1254657455
+Set maintenance_work_mem = 1024
+Set work_mem = 1132734735
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.17s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.53s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.73s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.88s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.48s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.52s
+Throughput: 1.42 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 969
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.50s
+Thread 0: Query 3 executed in 0.67s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.46s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 0.89s
+Thread 0: Query 14 executed in 0.58s
+Thread 0: Query 15 executed in 0.65s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.52s
+Thread 0: Query 18 executed in 2.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.17s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.70s
+Throughput: 1.12 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.48s
+Thread 0: Query 3 executed in 0.62s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 1.44s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.44s
+Thread 0: Query 13 executed in 0.79s
+Thread 0: Query 14 executed in 0.58s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.77s
+Thread 0: Query 18 executed in 2.06s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.20s
+Thread 0: Query 21 executed in 0.45s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.78s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2452
+Set shared_buffers = 286545
+Set effective_cache_size = 1072878528
+Set maintenance_work_mem = 529131427
+Set work_mem = 894675300
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 1.74s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.80s
+Thread 0: Query 4 executed in 0.23s
+Thread 0: Query 5 executed in 0.37s
+Thread 0: Query 6 executed in 0.30s
+Thread 0: Query 7 executed in 0.40s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.07s
+Thread 0: Query 12 executed in 0.53s
+Thread 0: Query 13 executed in 1.51s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.66s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.98s
+Thread 0: Query 18 executed in 3.04s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.50s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.88s
+Throughput: 1.39 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 3000
+Set shared_buffers = 1745769
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 355193142
+Set work_mem = 798945959
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.54s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.49s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.61s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.77s
+Thread 0: Query 18 executed in 2.77s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.50s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.23s
+Throughput: 1.44 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1211
+Set shared_buffers = 1920165
+Set effective_cache_size = 1339433983
+Set maintenance_work_mem = 1024
+Set work_mem = 1328630295
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.30s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 0.66s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.63s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.83s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.25s
+Throughput: 1.44 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 968
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483645
+Set maintenance_work_mem = 199843416
+Set work_mem = 702
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.41s
+Thread 0: Query 3 executed in 0.47s
+Thread 0: Query 4 executed in 0.19s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.35s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.76s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.49s
+Thread 0: Query 13 executed in 0.59s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.67s
+Thread 0: Query 16 executed in 0.25s
+Thread 0: Query 17 executed in 2.48s
+Thread 0: Query 18 executed in 2.09s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.08s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 14.06s
+Throughput: 1.56 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.10s
+Thread 0: Query 2 executed in 0.49s
+Thread 0: Query 3 executed in 0.65s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.19s
+Thread 0: Query 9 executed in 1.42s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.81s
+Thread 0: Query 14 executed in 0.60s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.30s
+Thread 0: Query 17 executed in 6.77s
+Thread 0: Query 18 executed in 2.07s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.20s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 19.86s
+Throughput: 1.11 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 3000
+Set shared_buffers = 2257883
+Set effective_cache_size = 1566465279
+Set maintenance_work_mem = 480352186
+Set work_mem = 1275122585
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.08s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.48s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.70s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.55s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.85s
+Thread 0: Query 18 executed in 2.87s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.51s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.42s
+Throughput: 1.43 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 3000
+Set shared_buffers = 2885841
+Set effective_cache_size = 1015167296
+Set maintenance_work_mem = 1024
+Set work_mem = 1057676895
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.36s
+Thread 0: Query 3 executed in 0.51s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.34s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.48s
+Thread 0: Query 14 executed in 0.29s
+Thread 0: Query 15 executed in 0.60s
+Thread 0: Query 16 executed in 0.20s
+Thread 0: Query 17 executed in 1.78s
+Thread 0: Query 18 executed in 2.79s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.46s
+Thread 0: Query 21 executed in 0.46s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.15s
+Throughput: 1.45 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 3000
+Set shared_buffers = 2300932
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 1024
+Set work_mem = 1342657783
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.08s
+Thread 0: Query 2 executed in 0.35s
+Thread 0: Query 3 executed in 0.54s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.68s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.50s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.31s
+Thread 0: Query 15 executed in 0.62s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.79s
+Thread 0: Query 18 executed in 2.84s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.49s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.34s
+Throughput: 1.43 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 968
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.11s
+Thread 0: Query 2 executed in 0.52s
+Thread 0: Query 3 executed in 0.70s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.34s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.37s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 1.48s
+Thread 0: Query 10 executed in 0.35s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.46s
+Thread 0: Query 13 executed in 0.91s
+Thread 0: Query 14 executed in 0.60s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.29s
+Thread 0: Query 17 executed in 6.87s
+Thread 0: Query 18 executed in 2.17s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.19s
+Thread 0: Query 21 executed in 0.45s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 20.33s
+Throughput: 1.08 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 1804
+Set shared_buffers = 3704531
+Set effective_cache_size = 1680377983
+Set maintenance_work_mem = 1024
+Set work_mem = 1256437145
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.13s
+Thread 0: Query 2 executed in 0.37s
+Thread 0: Query 3 executed in 0.55s
+Thread 0: Query 4 executed in 0.18s
+Thread 0: Query 5 executed in 0.32s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.36s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 0.72s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.53s
+Thread 0: Query 13 executed in 1.60s
+Thread 0: Query 14 executed in 0.32s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.21s
+Thread 0: Query 17 executed in 1.83s
+Thread 0: Query 18 executed in 2.90s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.53s
+Thread 0: Query 21 executed in 0.48s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.72s
+Throughput: 1.40 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 2778
+Set shared_buffers = 2213053
+Set effective_cache_size = 555851328
+Set maintenance_work_mem = 1024
+Set work_mem = 1466763923
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.12s
+Thread 0: Query 2 executed in 0.37s
+Thread 0: Query 3 executed in 0.52s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.31s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.34s
+Thread 0: Query 8 executed in 0.20s
+Thread 0: Query 9 executed in 0.71s
+Thread 0: Query 10 executed in 0.33s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.51s
+Thread 0: Query 13 executed in 1.58s
+Thread 0: Query 14 executed in 0.30s
+Thread 0: Query 15 executed in 0.63s
+Thread 0: Query 16 executed in 0.22s
+Thread 0: Query 17 executed in 1.80s
+Thread 0: Query 18 executed in 2.82s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.52s
+Thread 0: Query 21 executed in 0.49s
+Thread 0: Query 22 executed in 0.08s
+
+==================================================
+Total queries: 22
+Total execution time: 15.48s
+Throughput: 1.42 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 967
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483646
+Set maintenance_work_mem = 199843416
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.42s
+Thread 0: Query 2 executed in 0.51s
+Thread 0: Query 3 executed in 0.64s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.37s
+Thread 0: Query 6 executed in 0.27s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.53s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.48s
+Thread 0: Query 13 executed in 0.83s
+Thread 0: Query 14 executed in 0.64s
+Thread 0: Query 15 executed in 0.68s
+Thread 0: Query 16 executed in 0.32s
+Thread 0: Query 17 executed in 6.87s
+Thread 0: Query 18 executed in 2.21s
+Thread 0: Query 19 executed in 0.05s
+Thread 0: Query 20 executed in 1.30s
+Thread 0: Query 21 executed in 0.50s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 20.92s
+Throughput: 1.05 queries/sec
+==================================================
+13.924890041351318
+/home/karimnazarovj/LATuner/tuner.py:406: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_X = torch.tensor(train_X, dtype=torch.float64)
+/home/karimnazarovj/LATuner/tuner.py:407: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_Y = torch.tensor(train_Y, dtype=torch.float64)
+Set max_connections = 970
+Set shared_buffers = 1412130
+Set effective_cache_size = 2147483647
+Set maintenance_work_mem = 199843417
+Set work_mem = 64
+Database Config: tpch_1_template with user postgres on localhost:5432
+Loaded 22 queries, 1 threads
+Thread 0: Query 1 executed in 2.18s
+Thread 0: Query 2 executed in 0.51s
+Thread 0: Query 3 executed in 0.67s
+Thread 0: Query 4 executed in 0.17s
+Thread 0: Query 5 executed in 0.33s
+Thread 0: Query 6 executed in 0.28s
+Thread 0: Query 7 executed in 0.38s
+Thread 0: Query 8 executed in 0.21s
+Thread 0: Query 9 executed in 1.48s
+Thread 0: Query 10 executed in 0.36s
+Thread 0: Query 11 executed in 0.08s
+Thread 0: Query 12 executed in 0.45s
+Thread 0: Query 13 executed in 0.84s
+Thread 0: Query 14 executed in 0.66s
+Thread 0: Query 15 executed in 0.64s
+Thread 0: Query 16 executed in 0.31s
+Thread 0: Query 17 executed in 6.68s
+Thread 0: Query 18 executed in 2.05s
+Thread 0: Query 19 executed in 0.06s
+Thread 0: Query 20 executed in 1.18s
+Thread 0: Query 21 executed in 0.47s
+Thread 0: Query 22 executed in 0.09s
+
+==================================================
+Total queries: 22
+Total execution time: 20.07s
+Throughput: 1.10 queries/sec
+==================================================
+main.py:17: DeprecationWarning: The 'warn' method is deprecated, use 'warning' instead
+  logger.warn("llm end2end tuning over!!!")
+
+End time: 2026-01-27 02:39:51
+End time (Unix): 1769481591
+Duration: 3816 seconds (63m 36s)
+Exit code: 0
