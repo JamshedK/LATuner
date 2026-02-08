@@ -1,5 +1,5 @@
 {
-    "benchbase_tpcc_50" : {
+    "benchbase_tpcc_200" : {
         "cmd" : "/home/karimnazarovj/LATuner/run_benchbase.sh tpcc {0} {1} {2}"
     }
 }

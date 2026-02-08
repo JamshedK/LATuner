@@ -10,7 +10,7 @@ pkill -f "main.py" 2>/dev/null
 echo "Starting LATuner TPC-C optimization runs..."
 
 # Run 3 trials sequentially
-for trial in 1 2 3 4; do
+for trial in 1; do
     logfile="logs/latuner_test${trial}.log"
     
     echo "==================================="
